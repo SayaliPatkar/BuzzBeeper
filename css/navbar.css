@@ -1,0 +1,52 @@
+.navbar-custom{
+	background-color:#1e1e1e;
+	border-color:#FFF;
+	color:#FFF;
+	width:100%;
+}
+
+.navbar-custom .navbar-brand{
+	color:#1e1e1e;
+	height:40%;
+}
+
+
+.navbar-custom .navbar-nav > li > a {
+		font-size : 15px;
+		color:#FFF;
+		top: 10px;
+		margin-left:25px;
+}
+
+.navbar-custom .navbar-nav > .active > a{
+		color:#FFFFFF;
+		background-color: #00B9E6;
+} 
+.navbar-custom .navbar-nav > .active > a:hover{
+		color:#FFFFFF;
+		background-color: #00B9E6;
+}  
+.navbar-custom .navbar-nav > .active > a:focus {
+	color: #00B9E6;
+	background-color: #FFF;
+}
+	
+.navbar-custom .navbar-nav > li > a:hover{
+	color:#FFFFFF;
+		background-color: #00B9E6;
+}
+.navbar-custom .navbar-nav > li > a:focus{
+	color:#FFFFFF;
+		background-color: #00B9E6;
+}
+
+.navbar-custom .navbar-brand{
+	font-size: 25px;
+}
+.navbar-custom .navbar-toggle span{background-color:#00B9E6;}
+
+/* No scrolling for collapsed menu */
+
+.navbar-collapse.in {
+overflow: hidden;
+}

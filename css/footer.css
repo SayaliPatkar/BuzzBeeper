@@ -1,0 +1,28 @@
+.foot{
+		font-size: 30px;
+background-color:#222;
+color: #FFF;
+width: 100%;
+margin-right: 0px;
+   padding-right: 0px;
+   bottom: 0;
+}
+
+
+.anc a{
+    color: #FFF;
+	font-size: 15px;
+    text-decoration: none;
+	padding-bottom: 0px;
+}
+
+.anc a:hover, a:focus {
+	color: #FF9900;
+	font-size: 17px;
+    text-decoration: underline;
+}
+
+.topnav{
+	background-color: #5f5f5f;
+    color: #f1f1f1;
+}

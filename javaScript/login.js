@@ -37,7 +37,9 @@ function handleLogin(){
             }
             console.log(error);
         });
+
     }
+
 }
 
 function handleSignUp(){
@@ -112,6 +114,17 @@ firebase.auth().onAuthStateChanged(function(user) {
         var isAnonymous = user.isAnonymous;
         var uid = user.uid;
         var providerData = user.providerData;
+        document.close();
+        window.open("localhost:63343/GitBuzzBeper/BuzzBeeper/Home.html?")
+        var img1 = document.getElementById('img1');
+        img1.style.display = "block";
+        var img2 = document.getElementById('img2');
+        img2.style.display = "none";
+
+        document.getElementById('btnsignout').style.display="block";
+        document.getElementById('txtLogin').style.display="none";
+        document.getElementById('btnChannels').style.pointerEvents="all";
+
         if (!emailVerified) {
             // alert('user  is Logged IN');
             sendEmailVerification();
