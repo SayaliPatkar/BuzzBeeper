@@ -35,47 +35,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script
-            src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="javaScript/HomePage.js"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
 
-    <script>
-        function clickArrow() {
-
-            window.alert("sometext");
-            //      window.scrollTo(2000, 0);
-        }
-        function findUser()
-        {
-            var i=0;
-            // if user is login i=1
-            if(i==0)
-            {
-                //arrow
-                var img1 = document.getElementById('img1');
-                img1.style.display = "none";
-                var img2 = document.getElementById('img2');
-                img2.style.display = "block";
-                document.getElementById('btnsignout').style.display="none";
-                document.getElementById('txtLogin').style.display="block";
-                document.getElementById('btnChannels').style.pointerEvents="none";
-            }
-            if(i!=0)
-            {
-                //login
-                var img1 = document.getElementById('img1');
-                img1.style.display = "block";
-                var img2 = document.getElementById('img2');
-                img2.style.display = "none";
-
-                document.getElementById('btnsignout').style.display="block";
-                document.getElementById('txtLogin').style.display="none";
-                document.getElementById('btnChannels').style.pointerEvents="all";
-            }
-        }
-
-    </script>
 </head>
 <body style="background-color:black; overflow: scroll" data-spy="scroll" data-target=".navbar" data-offset="60"  >
 
@@ -118,11 +82,12 @@
 
 
 
-        <img id="img1" class="img-responsive" align="middle" onclick="clickArrow()" onload="findUser()" style="align-items: center; opacity: 1 !important; margin-left: 597px;margin-top: -9px;height: 152px;" src="images\arrow4.png" >
+        <img id="img1" class="img-responsive" align="middle" onclick="clickArrow()" onload="findUser()"  src="images\arrow4.png" >
 
         <div>
             <p id="txtLogin"> LOGIN</p>
-            <a data-toggle="modal" align="middle" data-target="#login"><img id="img2" class="img-responsive"   onload="findUser()" style="align-items: center; opacity: 1 !important;  margin-top:-108px;margin-left: 558px;height: 193px;" src="images\login2.png" ></a>
+            <a data-toggle="modal" align="middle" data-target="#login">
+                <img id="img2" class="img-responsive"   onload="findUser()" src="images\login2.png" ></a>
         </div>
 
     </div>
