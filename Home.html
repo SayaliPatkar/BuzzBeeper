@@ -35,11 +35,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="javaScript/HomePage.js"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
 
+    <script>
+        function clickArrow() {
+
+            window.alert("sometext");
+            //      window.scrollTo(2000, 0);
+        }
+        function findUser()
+        {
+            var i=0;
+            // if user is login i=1
+            if(i==0)
+            {
+                //arrow
+                var img1 = document.getElementById('img1');
+                img1.style.display = "none";
+                var img2 = document.getElementById('img2');
+                img2.style.display = "block";
+                document.getElementById('btnsignout').style.display="none";
+                document.getElementById('txtLogin').style.display="block";
+                document.getElementById('btnChannels').style.pointerEvents="none";
+            }
+            if(i!=0)
+            {
+                //login
+                var img1 = document.getElementById('img1');
+                img1.style.display = "block";
+                var img2 = document.getElementById('img2');
+                img2.style.display = "none";
+
+                document.getElementById('btnsignout').style.display="block";
+                document.getElementById('txtLogin').style.display="none";
+                document.getElementById('btnChannels').style.pointerEvents="all";
+            }
+        }
+
+    </script>
+    <script>
+        $(document).ready(function(){
+            // Add smooth scrolling to all links in navbar + footer link
+            $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+                // Make sure this.hash has a value before overriding default behavior
+                if (this.hash !== "") {
+                    // Prevent default anchor click behavior
+                    event.preventDefault();
+
+                    // Store hash
+                    var hash = this.hash;
+
+                    // Using jQuery's animate() method to add smooth page scroll
+                    // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 900, function(){
+
+                        // Add hash (#) to URL when done scrolling (default click behavior)
+                        window.location.hash = hash;
+                    });
+                } // End if
+            });
+
+            $(window).scroll(function() {
+                $(".slideanim").each(function(){
+                    var pos = $(this).offset().top;
+
+                    var winTop = $(window).scrollTop();
+                    if (pos < winTop + 600) {
+                        $(this).addClass("slide");
+                    }
+                });
+            });
+
+        });
+    </script>
 </head>
 <body style="background-color:black; overflow: scroll" data-spy="scroll" data-target=".navbar" data-offset="60"  >
 
@@ -82,22 +155,116 @@
 
 
 
-        <img id="img1" class="img-responsive" align="middle" onclick="clickArrow()" onload="findUser()"  src="images\arrow4.png" >
+        <img id="img1" class="img-responsive" align="middle" onclick="clickArrow()" onload="findUser()" style="align-items: center; opacity: 1 !important; margin-left: 597px;margin-top: -9px;height: 152px;" src="images\arrow4.png" >
 
         <div>
             <p id="txtLogin"> LOGIN</p>
-            <a data-toggle="modal" align="middle" data-target="#login">
-                <img id="img2" class="img-responsive"   onload="findUser()" src="images\login2.png" ></a>
+            <a data-toggle="modal" align="middle" data-target="#login"><img id="img2" class="img-responsive"   onload="findUser()" style="align-items: center; opacity: 1 !important;  margin-top:-108px;margin-left: 609px;height: 193px;" src="images\login2.png" ></a>
         </div>
 
     </div>
+    <br/>
+    <div class="container-fluid slideanim">
+        <br>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <div class="item active slideanim">
+
+                    <div class="col-md-5">
+                        <img src="report1.jpg" alt="report1" width="100%" height="345">
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-5 text-center" >
+                        <p><font color="white" align="centre"  >HOW I MET YOUR MOTHER</font>></p>
+                        <p><font color="white">The series concerns the adventures of Ted Mosby (played by Josh Radnor) and how he met the mother of his children. The story starts in 2005 with a 27-year-old Ted Mosby living in New York City and working as an architect; the narrative deals primarily with his best friends, including the long-lasting couple Marshall Eriksen (Jason Segel) and Lily Aldrin (Alyson Hannigan); the eccentric, womanizing-playboy Barney Stinson (Neil Patrick Harris); and news anchor Robin Scherbatsky (Cobie Smulders). The series explores many storylines, including a "will they or won't they" relationship between Robin and each of the two single male characters, Marshall and Lily's relationship, and the ups and downs of the characters' careers.</font></p>
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                </div>
+                <div class="item slideanim">
+                    <div class="col-md-5">
+                        <img src="report2.jpg" alt="report2" width="100%" height="345">
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-5 text-center">
+                        <p><font color="white" align="centre"  >FRIENDS</font>></p>
+                        <p><font color="white">Rachel Green flees her wedding day and seeks out childhood friend Monica Geller, a New York City chef. They become roommates, and Rachel joins Monica's social circle of single people in their mid-20s: struggling actor Joey Tribbiani, business professional Chandler Bing, masseuse and musician Phoebe Buffay, and newly divorced paleontologist Ross Geller, Monica's older brother. To support herself, Rachel becomes a waitress at Central Perk, a Manhattan coffeehouse where the group often hangs out; when not there, the six are usually at Monica and Rachel's nearby West Village apartment, or Joey and Chandler's across the hall.
+                            Episodes typically depict the friends' comedic and romantic adventures and career issues, such as Joey auditioning for roles or Rachel seeking jobs in the fashion industry. The six characters each have many dates and serious relationships, such as Monica with Richard Burke and Ross with Emily Waltham. Ross and Rachel's intermittent relationship is the most often-recurring storyline; during the ten seasons of the show they repeatedly date and break up, even while Ross briefly marries Emily, he and Rachel have a child, Chandler and Monica date and marry each other, and Phoebe marries Mike Hannigan. Other frequently recurring characters include Ross and Monica's parents in Long Island, Ross's ex-wife and their son, Central Perk barista Gunther, Chandler's ex-girlfriend Janice, and Phoebe's twin sister Ursula.</font></p>
+
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                </div>
+                <div class="item slideanim">
+                    <div class="col-md-5">
+                        <img src="report3.jpg" alt="report3" width="100%" height="345">
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-5 text-center">
+                        <p><font color="white" align="centre"  >FRIENDS</font>></p>
+                        <p><font color="white">Right to Information</font></p>
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
 
 
-</div>
+
+    <br/>
+    <div id="blog" class="container-fluid text-center">
+        <div class="item">
+            <br/>
+            <div class="row text-center slideanim">
+                <div class="col-sm-4"><a href="blog.php" style="color:black;" target="_blank">
+                    <div class="thumbnail zoomin" >
+                        <img src="images/pic.png" alt="IMAGE" width="400" height="300">
+                        <h3><strong>Your Subscribed Channel 1</strong></h3>
+                    </div></a>
+                </div>
+                <div class="col-sm-4" ><a href="blog2.php" style="color:black;" target="_blank">
+                    <div class="thumbnail zoomin">
+                        <img src="images/pic1.jpg" alt="report2" width="400" height="300">
+                        <h3><strong>Your Subscribed Channel 2</strong></h3>
+                    </div></a>
+                </div>
+                <div class="col-sm-4"><a href="blog3.php" style="color:black;" target="_blank">
+                    <div class="thumbnail zoomin">
+                        <img src="images/pic2.jpg" alt="report2" width="400" height="300">
+                        <h3><strong>Your Subscribed Channel 3</strong></h3>
+                    </div></a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
-<!-- Modal LOG IN-->
+    <br/>
+
+
+
+
+
+
+
+    <!-- Modal LOG IN-->
 <div id="login" class="modal fade" >
     <div class="modal-dialog">
         <!-- Modal content-->
@@ -175,5 +342,7 @@
     </div>
 </div>
 <script src=javaScript/login.js></script>
+
+
 </body>
 </html>
