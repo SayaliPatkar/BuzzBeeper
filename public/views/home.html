@@ -22,7 +22,26 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link href='../css/BackgroundKeyandarrow.css.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <style>
+        #pArrowPane
+        {
+            color: wheat;
+            height: 169px;
+            margin-top: 59px;
+            width: 400px;
+            margin-left: 445px;
+        }
+        #ploginPane
+        {
+            color: wheat;
+            height: 169px;
+            margin-top: 59px;
+            width: 400px;
+            margin-left: 445px;
+        }
+    </style>
 </head>
 
 <body style="background-color:black; overflow: scroll" data-spy="scroll" data-target=".navbar" data-offset="60"  >
@@ -32,18 +51,19 @@
 
 <div class="img-wrapper" style="margin-left: 51px; ">
 
-    <img class="img-responsive"  src="images\BackgroundImg.png" height="100%" width="100%" >
-    <div class="img-overlay">
+    <div ng-if="!loggedinUser" height="100%" width="100%">
+        <img  class="img-responsive"  src="images\BackLogin.png" height="100%" width="100%" >
+        <div class="img-overlay">
+            <a data-match-route="/login" href="/login"><p id="txtLogin">
 
-
-        <div id="arrowDiv" ng-if="loggedinUser">
-            <img id="img1" class="img-responsive" align="middle" src="images\arrow4.png" >
+                <div id="pArrowPane"></div>
+            </a>
         </div>
-
-        <div id="loginDiv" ng-if="!loggedinUser">
-
-            <a data-match-route="/login" href="/login"><p id="txtLogin"> LOGIN</p></a>
-            <img id="img2" class="img-responsive"  src="images\login2.png" >
+    </div>
+    <div ng-if="loggedinUser" height="100%" width="100%">
+        <img  class="img-responsive"  src="images\BackArrow.png" height="100%" width="100%" >
+        <div class="img-overlay">
+            <div id="ploginPane"></div>
         </div>
     </div>
 </div>

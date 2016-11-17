@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-type" content="text/html"; charset="utf-8">
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
     <link rel="stylesheet" href="../css/style.css" />
     <link href='../css/Logo.css' rel='stylesheet' type='text/css'>
     <link href='../css/TextOnImage.css' rel='stylesheet' type='text/css'>
@@ -16,7 +19,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -29,7 +31,7 @@
     <!-- Modal content-->
     <div class="modal-content">
         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">×</button>
+            <!--<button type="button" class="close" data-dismiss="modal">×</button>-->
             <h3>Login to BuzzBeeper</h3>
         </div>
         <div class="modal-body">
@@ -40,12 +42,13 @@
             <br>
             <input type="password" class="form-control" id="passwordLogin" placeholder="Password">
             <br>
-            <button class="btn btn-primary" onclick="handleLogin()" >Login</button>
+            <button data-match-route="/" class="btn btn-primary" onclick="handleLogin()" >Login</button>
             <br><br>
             <a  data-toggle="modal" data-target="#forgotPass" data-dismiss="modal">Forget Password ?</a>
         </div>
     </div>
 </div>
+
 
 
 </body>

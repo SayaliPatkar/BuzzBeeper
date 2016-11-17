@@ -39,7 +39,9 @@ function handleLogin(){
             console.log(error);
         });
 
+
     }
+    window.open("http://localhost:3000/");
 
 }
 
