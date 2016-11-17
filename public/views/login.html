@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link href='../css/Logo.css' rel='stylesheet' type='text/css'>
+    <link href='../css/TextOnImage.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../css/footer.css" type="text/css" />
+    <link rel="stylesheet" href="../css/navbar.css" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+</head>
+<body>
+
+<div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">×</button>
+            <h3>Login to BuzzBeeper</h3>
+        </div>
+        <div class="modal-body">
+
+            <b color="black">Don't have an account? </b><a  data-match-route="/login" href="/login">Register here</a>
+            <br><br>
+            <input type="email" class="form-control" id="emailLogin" placeholder="Email">
+            <br>
+            <input type="password" class="form-control" id="passwordLogin" placeholder="Password">
+            <br>
+            <button class="btn btn-primary" onclick="handleLogin()" >Login</button>
+            <br><br>
+            <a  data-toggle="modal" data-target="#forgotPass" data-dismiss="modal">Forget Password ?</a>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

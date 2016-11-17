@@ -28,6 +28,7 @@
 <body style="background-color:black; overflow: scroll" data-spy="scroll" data-target=".navbar" data-offset="60"  >
 
 <script src=../javascripts/login.js></script>
+<script src=../javascripts/app.js></script>
 
 <div class="img-wrapper" style="margin-left: 51px; ">
 
@@ -35,18 +36,16 @@
     <div class="img-overlay">
 
 
-
-        <img id="img1" class="img-responsive" align="middle" onclick="clickArrow()" onload="findUser()"  src="images\arrow4.png" >
-
-        <div>
-            <p id="txtLogin"> LOGIN</p>
-            <a data-toggle="modal" align="middle" data-target="#login">
-                <img id="img2" class="img-responsive"   onload="findUser()" src="images\login2.png" ></a>
+        <div id="arrowDiv" ng-if="loggedinUser">
+            <img id="img1" class="img-responsive" align="middle" src="images\arrow4.png" >
         </div>
 
+        <div id="loginDiv" ng-if="!loggedinUser">
+
+            <a data-match-route="/login" href="/login"><p id="txtLogin"> LOGIN</p></a>
+            <img id="img2" class="img-responsive"  src="images\login2.png" >
+        </div>
     </div>
-
-
 </div>
 
 

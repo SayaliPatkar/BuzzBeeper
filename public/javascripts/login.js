@@ -8,10 +8,11 @@
 // Get a reference to the database service
 var fdatabase = firebase.database().ref('feedback_web');
 var usersdata = firebase.database().ref('userlist');
+var loggedinUser = firebase.auth().currentUser;
 
 function handleLogin(){
 
-    if (firebase.auth().currentUser) {
+    if (loggedinUser) {
         //logout previous user if any
         firebase.auth().signOut();
     } else {
