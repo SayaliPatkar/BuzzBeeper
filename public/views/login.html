@@ -1,3 +1,35 @@
+<head>
+    <script type='text/javascript'
+            src='http://code.jquery.com/jquery-2.0.2.js'></script>
+    <link rel="stylesheet" type="text/css"
+          href="http://getbootstrap.com/dist/css/bootstrap.css">
+    <script type='text/javascript'
+            src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <style type='text/css'>
+        .fa.form-control-feedback {<!-- w  ww.jav a2  s .co m-->
+        line-height: 34px;
+        }
+        .input-lg ~ .fa.form-control-feedback {
+            line-height: 46px;
+        }
+        .has-feedback-left input.form-control {
+            padding-left: 34px;
+            padding-right: 12px;
+        }
+        .has-feedback-left .form-control-feedback {
+            left: 4px;
+            top : 4px;
+        }
+
+        .form-horizontal .has-feedback-left .form-control-feedback {
+            left: 12px;
+        }
+    </style>
+
+</head>
+<body>
 
 <div class="container">
     <div class="row">
@@ -17,14 +49,17 @@
                         <a data-match-route="/signup" href="/signup">Register Here</a>
                     </div>
 
-                    <div class="form-group">
+
+                    <div class="form-group has-feedback has-feedback-left">
+                        <i class="fa fa-user form-control-feedback" style="font-size:36px"></i>
                         <input class="form-control input-lg" type="text" name="email"
-                               ng-model="email" placeholder="Email" required autofocus>
+                               ng-model="email" placeholder="  Email" required autofocus>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group has-feedback has-feedback-left">
+                        <i class="fa fa-lock form-control-feedback" style="font-size:36px"></i>
                         <input class="form-control input-lg" type="password" name="password"
-                               ng-model="password" placeholder="Password" required>
+                               ng-model="password" placeholder="  Password" required>
                     </div>
 
                     <button type="submit" ng-disabled="loginForm.$invalid"
@@ -35,3 +70,6 @@
         </div>
     </div>
 </div>
+
+
+</body>

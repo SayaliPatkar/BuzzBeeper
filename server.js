@@ -17,6 +17,31 @@ app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
 
+app.get('/api/shows', function(req, res, next) {
+  var query = Show.find();
+  query.where({ network: req.query.network });
+  query.exec(function(err, shows) {
+    if (err) return next(err);
+    res.send(shows);
+  });
+});
+
+app.get('/api/shows/:id', function(req, res, next) {
+  Show.findById(req.params.id, function(err, show) {
+    if (err) return next(err);
+    res.send(show);
+  });
+});
+
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.send(500, { message: err.message });
+});
+
+app.get('*', function(req, res) {
+  res.redirect('/#' + req.originalUrl);
+});
+
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 
