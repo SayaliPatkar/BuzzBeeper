@@ -18,6 +18,10 @@ angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mg
                 templateUrl: 'views/signup.html',
                 controller: 'SignupCtrl'
             })
+            .when('/userpage', {
+                templateUrl: 'views/userpage.html',
+                controller: 'UserCtrl'
+            })
             .when('/add', {
                 templateUrl: 'views/add.html',
                 controller: 'AddCtrl'

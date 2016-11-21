@@ -2,47 +2,22 @@
  * Created by SAYALI on 14-11-2016.
  */
 
-// Initialize Firebase
+// Initialized Firebase in index.html
 
 
 // Get a reference to the database service
-var fdatabase = firebase.database().ref('feedback_web');
-var usersdata = firebase.database().ref('userlist');
+/*var fdatabase = firebase.database().ref('feedback_web');
+var usersdata = firebase.database().ref('userlist');*/
+
 var loggedinUser = firebase.auth().currentUser;
 
-function handleLogin(){
-
-    if (loggedinUser) {
-        //logout previous user if any
-        firebase.auth().signOut();
-    } else {
-        var email = document.getElementById('emailLogin').value;
-        var password = document.getElementById('passwordLogin').value;
-        if (email.length < 5) {
-            alert('Please enter a valid email address.');
-            return;
-        }
-        if (password.length < 6) {
-            alert('Password should be minimum 6 characters');
-            return;
-        }
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            // [START_EXCLUDE]
-            if (errorCode === 'auth/wrong-password') {
-                alert('Wrong password.');
-            } else {
-                alert(errorMessage);
-            }
-            console.log(error);
-        });
-
-
-    }
-    window.open("http://localhost:3000/");
-
+function logout(){
+    firebase.auth().signOut().then(function() {
+        console.log('Signed Out the old user!!');
+    }, function(error) {
+        console.error('Sign Out Error', error);
+    });
+    window.location = "http://localhost:3000/";
 }
 
 function handleSignUp(){
@@ -117,12 +92,8 @@ firebase.auth().onAuthStateChanged(function(user) {
         var isAnonymous = user.isAnonymous;
         var uid = user.uid;
         var providerData = user.providerData;
-        document.close();
-        window.open("localhost:63343/GitBuzzBeper/BuzzBeeper/Home.html?")
-        var img1 = document.getElementById('img1');
-        img1.style.display = "block";
-        var img2 = document.getElementById('img2');
-        img2.style.display = "none";
+        window.open("http://localhost:3000/");
+
 
         document.getElementById('btnsignout').style.display="block";
         document.getElementById('txtLogin').style.display="none";

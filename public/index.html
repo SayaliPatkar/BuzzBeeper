@@ -56,6 +56,8 @@
 <script src="javascripts/app.js"></script>
 <script src="controllers/main.js"></script>
 <script src="controllers/logincontroller.js"></script>
+<script src="controllers/userController.js"></script>
+<script src="controllers/signUpController.js"></script>
 
 <nav class="navbar navbar-custom navbar-fixed-top ">
     <div class="container-fluid  " >
@@ -82,12 +84,6 @@
                 <li data-match-route="/$"><a href="/">Home</a></li>
                 <li data-match-route="/channels"><a href="/channels">Channels</a></li>
                 <li data-match-route="/contactUs"><a href="/contactUs">Contact Us</a></li>
-                <ul class="nav navbar-nav pull-right" ng-if="loggedinUser">
-
-                    <!--TODO add email id from object
-                    <li class="navbar-text" ng-bind="user.email"></li>-->
-                    <li><a href="javascript:void(0)" ng-click="logout()">Logout</a></li>
-                </ul>
             </ul>
         </div>
     </div>
