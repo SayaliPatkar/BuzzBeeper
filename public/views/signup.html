@@ -1,14 +1,53 @@
-<div class="container">
-    <br/>
+<head>
+    <script type='text/javascript'
+            src='http://code.jquery.com/jquery-2.0.2.js'></script>
+    <link rel="stylesheet" type="text/css"
+          href="http://getbootstrap.com/dist/css/bootstrap.css">
+    <script type='text/javascript'
+            src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <style type='text/css'>
+        .fa.form-control-feedback {
+        line-height: 34px;
+        }
+        .input-lg  .fa.form-control-feedback {
+            line-height: 46px;
+        }
+        .has-feedback-left input.form-control {
+            padding-left: 34px;
+            padding-right: 12px;
+        }
+        .has-feedback-left .form-control-feedback {
+            left: 4px;
+            top : 4px;
+        }
 
+        .form-horizontal .has-feedback-left .form-control-feedback {
+            left: 12px;
+        }
+        .container {
+            width: 450px;
+        }
+
+        .buttonHolder{
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+<div class="container">
     <div class="row">
         <div class="center-form panel">
             <form method="post" ng-submit="signUp()" name="signupForm">
                 <div class="panel-body">
                     <h3 class="text-center">Register with BuzzBeeper</h3>
 
-                    <div class="form-group">
-                        <input type="text" ng-model="emailId" name="emailId" id="emailId" class="form-control input-lg" placeholder="Email" required autofocus/>
+                    <div class="form-group has-feedback has-feedback-left">
+                        <i class="fa fa-user form-control-feedback" style="font-size:36px"></i>
+                        <input type="text" ng-model="emailId" name="emailId" id="emailId" class="form-control input-lg" placeholder="  Email" required autofocus/>
 
                     </div>
                     <div class="form-group" >
@@ -20,12 +59,16 @@
 
                     </div>
 
-                    <button type="submit" ng-disabled="signupForm.$invalid" class="btn btn-lg btn-block btn-primary">Register</button>
-                    <a data-match-route="/login" href="/login" class="btn btn-link">Cancel</a>
-
-
+                    <div class=""></div>
+                    <div class="buttonHolder">
+                        <button type="submit" ng-disabled="signupForm.$invalid" class="btn btn-lg btn-block btn-primary">Register</button>
+                        <a data-match-route="/login" href="/login" class="btn btn-link">Cancel</a>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+</body>
+
