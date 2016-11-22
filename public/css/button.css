@@ -1,0 +1,31 @@
+.readMoreBtn {
+    border-top: 1px solid #b6b6b6;
+    background: #d54d7a;
+    background: -webkit-gradient(linear, left top, left bottom, from(#d54d7a), to(#d54d7a));
+    background: -webkit-linear-gradient(top, #d54d7a, #d54d7a);
+    background: -moz-linear-gradient(top, #d54d7a, #d54d7a);
+    background: -ms-linear-gradient(top, #d54d7a, #d54d7a);
+    background: -o-linear-gradient(top, #d54d7a, #d54d7a);
+    padding: 5px 10px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    box-shadow: rgba(0,0,0,1) 0 1px 0;
+    text-shadow: rgba(0,0,0,.4) 0 1px 0;
+    color: white;
+    font-size: 10px;
+    font-family: Georgia, Serif;
+    text-decoration: none;
+    vertical-align: middle;
+}
+.readMoreBtn:hover {
+    border-top-color: #d54d7a;
+    background: #d54d7a;
+    color: #ccc;
+}
+.readMoreBtn:active {
+    border-top-color: #1b435e;
+    background: #1b435e;
+}
