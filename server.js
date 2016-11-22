@@ -39,7 +39,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.get('*', function(req, res) {
-  res.redirect('/#' + req.originalUrl);
+    res.redirect('/#' + req.originalUrl);
 });
 
 var mongoose = require('mongoose');
