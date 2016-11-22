@@ -9,9 +9,17 @@ angular.module('MyApp')
             var email = $scope.email;
             var password = $scope.password;
             if(firebase.auth().currentUser){
-                firebase.auth().signOut();
+                firebase.auth().signOut().then(function() {
+                    console.log('Signed Out the old user!!');
+                }, function(error) {
+                    console.error('Sign Out Error', error);
+                });
             }
-            firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+            firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
+                $location.path('/userpage');
+
+                console.log('Welcome user!!');
+            }, function(error) {
                 // Handle Errors here.
                 var errorCode = error.code;
                 var errorMessage = error.message;
@@ -23,6 +31,5 @@ angular.module('MyApp')
                 }
                 console.log(error);
             });
-            $location.path('/userpage');
         };
     }]);

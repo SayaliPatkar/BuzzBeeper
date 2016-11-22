@@ -92,13 +92,6 @@ firebase.auth().onAuthStateChanged(function(user) {
         var isAnonymous = user.isAnonymous;
         var uid = user.uid;
         var providerData = user.providerData;
-        window.open("http://localhost:3000/");
-
-
-        document.getElementById('btnsignout').style.display="block";
-        document.getElementById('txtLogin').style.display="none";
-        document.getElementById('btnChannels').style.pointerEvents="all";
-
         if (!emailVerified) {
             // alert('user  is Logged IN');
             sendEmailVerification();
