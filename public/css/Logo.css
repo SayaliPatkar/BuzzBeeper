@@ -140,9 +140,9 @@ h1::before {
     display: block;
     position: absolute;
     z-index: -1;
-    top: -10vmin;
-    left: 28vmin;
-    width: 34vmin;
+    top: -22vmin;
+    left: 30vmin;
+    width: 30vmin;
     height: 36vmin;
     box-sizing: border-box;
     border-radius: 50%;
