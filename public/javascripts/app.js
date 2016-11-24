@@ -34,14 +34,6 @@ angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mg
                 templateUrl: 'views/channels.html',
                 controller: 'channelctrl'
             })
-            .when('/chat', {
-                templateUrl: 'views/chat.html',
-                controller: 'ChatCtrl'
-            })
-            .when('/show', {
-                templateUrl: 'views/show.html',
-                controller: 'ShowCtrl'
-            })
             .otherwise({
                 redirectTo: '/'
             });
