@@ -71,7 +71,10 @@ app.post('/api/shows', function(req, res, next) {
         parser.parseString(body, function(err, result) {
           var series = result.data.series;
           var episodes = result.data.episode;
-          console.log(series.seriesname);
+          console.log("Fetched Serie :"+series.seriesname+
+              "\n aired on "+series.airs_dayofweek+" at "+ series.airs_time+
+              "\n First Aired on "+series.firstaired+
+              "\n Belongs to genere "+ series.genre);
           var show = new Show({
             _id: series.id,
             name: series.seriesname,
@@ -81,21 +84,7 @@ app.post('/api/shows', function(req, res, next) {
             genre: series.genre.split('|').filter(Boolean),
             network: series.network,
             overview: series.overview,
-            rating: series.rating,
-            ratingCount: series.ratingcount,
-            runtime: series.runtime,
-            status: series.status,
             poster: series.poster,
-            episodes: []
-          });
-          _.each(episodes, function(episode) {
-            show.episodes.push({
-              season: episode.seasonnumber,
-              episodeNumber: episode.episodenumber,
-              episodeName: episode.episodename,
-              firstAired: episode.firstaired,
-              overview: episode.overview
-            });
           });
           callback(err, show);
         });
