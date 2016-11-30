@@ -98,7 +98,18 @@ app.post('/api/shows', function(req, res, next) {
             network: series.network,
             overview: series.overview,
             poster: series.poster,
+            rating: series.rating,
+            episodes: []
           });
+            _.each(episodes, function(episode) {
+                show.episodes.push({
+                    season: episode.seasonnumber,
+                    episodeNumber: episode.episodenumber,
+                    episodeName: episode.episodename,
+                    firstAired: episode.firstaired,
+                    overview: episode.overview
+                });
+            });
           callback(err, show);
         });
       });
@@ -145,7 +156,15 @@ var showSchema = new mongoose.Schema({
   genre: [String],
   network: String,
   overview: String,
-  poster: String
+  poster: String,
+  rating: Number,
+  episodes: [{
+        season: Number,
+        episodeNumber: Number,
+        episodeName: String,
+        firstAired: Date,
+        overview: String
+  }]
 });
 
 var userSchema = new mongoose.Schema({

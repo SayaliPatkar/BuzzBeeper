@@ -11,8 +11,3 @@ angular.module('MyApp')
         $scope.shows = Show.query();
 
     }]);
-
-
-
-
-

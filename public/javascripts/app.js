@@ -4,7 +4,7 @@
 angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mgcrea.ngStrap'])
     .config(['$locationProvider','$routeProvider',function($locationProvider, $routeProvider) {
         $locationProvider.html5Mode(true);
-        routeProvider = $routeProvider;
+
         $routeProvider
             .when('/', {
                 templateUrl: 'views/home.html',
@@ -34,12 +34,8 @@ angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mg
                 templateUrl: 'views/channels.html',
                 controller: 'channelctrl'
             })
-            .when('/shows', {
+            .when('/show', {
                 templateUrl: 'views/show.html',
-                controller: 'ShowCtrl'
-            })
-            .when('/shows/:id', {
-                templateUrl:  'views/show.html',
                 controller: 'ShowCtrl'
             })
             .otherwise({
