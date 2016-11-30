@@ -1,0 +1,97 @@
+<html ng-app="MyApp">
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Details</title>
+
+    <script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBfm-XTl9-A4Sa477Nq3TlIMprn387jdn4",
+            authDomain: "buzzbeeper-26f27.firebaseapp.com",
+            databaseURL: "https://buzzbeeper-26f27.firebaseio.com",
+            storageBucket: "buzzbeeper-26f27.appspot.com",
+            messagingSenderId: "809633329277"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css" />
+    <link href='css/Logo.css' rel='stylesheet' type='text/css'>
+    <link href='css/TextOnImage.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/footer.css" type="text/css" />
+    <link rel="stylesheet" href="css/navbar.css" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+</head>
+<body style="background-color:black; overflow: scroll" data-spy="scroll" data-target=".navbar" data-offset="60"  >
+
+<div ng-view></div>
+
+<script src="angular/angular.js"></script>
+<script src="angular/angular-strap.js"></script>
+<script src="angular/angular-strap.tpl.js"></script>
+<script src="angular/angular-messages.js"></script>
+<script src="angular/angular-resource.js"></script>
+<script src="angular/angular-route.js"></script>
+<script src="angular/angular-cookies.js"></script>
+<script src="angular/moment.min.js"></script>
+
+<script src="javascripts/app.js"></script>
+<script src="controllers/main.js"></script>
+<script src="controllers/logincontroller.js"></script>
+<script src="controllers/userController.js"></script>
+<script src="controllers/signUpController.js"></script>
+<script src="controllers/contactuscontroller.js"></script>
+<script src="controllers/ChannelController.js"></script>
+<script src="controllers/chatcontroller.js"></script>
+<script src="controllers/showcontroller.js"></script>
+<script src="javascripts/show.js"></script>
+
+<nav class="navbar navbar-custom navbar-fixed-top ">
+    <div class="container-fluid  " >
+        <div class="navbar-header" style="width: 20px !important">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <h1 >
+                <em style="font-size: 25px !important;" >B</em>
+                <em  style="font-size: 35px !important;" class="planet left">U</em>
+                <em style="font-size: 25px !important;">Z</em>
+                <em style="font-size: 25px !important;">Z</em>
+                <em  style="font-size: 35px !important;" class="planet right">B</em>
+                <em style="font-size: 25px !important;">E</em>
+                <em style="font-size: 25px !important;">P</em>
+                <em style="font-size: 25px !important;">E</em>
+                <em style="font-size: 25px !important;">R</em>
+            </h1>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li data-match-route="/$"><a href="/">Home</a></li>
+                <li data-match-route="/channels"><a href="/channels">Channels</a></li>
+                <li data-match-route="/contactus"><a href="/contactus">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+</body>
+</html>
