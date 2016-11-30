@@ -23,10 +23,23 @@ app.listen(app.get('port'), function() {
 
 app.get('/api/shows', function(req, res, next) {
   var query = Show.find();
-  query.where({ network: req.query.network });
+  if(req.query.network){
+    query.where({ network: req.query.network });
+  }
+  else {
+    console.log("in /api/shows")
+    query.limit(12);
+  }
   query.exec(function(err, shows) {
     if (err) return next(err);
     res.send(shows);
+    console.log("Showing response data form /api/shows "+res)
+  });
+});
+
+app.get('/allshows', function(req, res) {
+  Show.find(function(err, users){
+      res.send(users)
   });
 });
 
@@ -71,7 +84,7 @@ app.post('/api/shows', function(req, res, next) {
         parser.parseString(body, function(err, result) {
           var series = result.data.series;
           var episodes = result.data.episode;
-          console.log("Fetched Serie :"+series.seriesname+
+          console.log("Fetched Serie :"+series.seriesname+" "+series.id+
               "\n aired on "+series.airs_dayofweek+" at "+ series.airs_time+
               "\n First Aired on "+series.firstaired+
               "\n Belongs to genere "+ series.genre);
@@ -145,4 +158,9 @@ var userSchema = new mongoose.Schema({
 var User = mongoose.model('User', userSchema);
 var Show = mongoose.model('Show', showSchema);
 
-mongoose.connect('localhost');
+mongoose.connect('mongodb://localhost:27017/BuzzBeeper');//initially 'localhost'
+var db = mongoose.connection;
+db.on("error", console.error.bind(console, "Connection error:"));
+db.once("open", function(callback){
+console.log("Connection Succeeded."); /* Once the database connection has succeeded, the code in db.once is executed. */
+});
