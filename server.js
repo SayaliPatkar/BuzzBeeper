@@ -23,19 +23,39 @@ app.listen(app.get('port'), function() {
 
 app.get('/api/shows', function(req, res, next) {
   var query = Show.find();
-  query.where({ network: req.query.network });
+  if(req.query.network){
+    query.where({ network: req.query.network });
+  }
+  else {
+    console.log("in /api/shows")
+    query.limit(12);
+  }
   query.exec(function(err, shows) {
     if (err) return next(err);
     res.send(shows);
+    console.log("Showing response data form /api/shows "+res)
+  });
+});
+
+app.get('/allshows', function(req, res) {
+  Show.find(function(err, users){
+      res.send(users)
   });
 });
 
 app.get('/api/shows/:id', function(req, res, next) {
-    Show.findById(req.params.id, function(err, show) {
+  User.findById(req.params.id, function(err, show) {
     if (err) return next(err);
     res.send(show);
   });
 });
+
+/*app.get('/user/:id', function(req, res) {
+  Show.findById(req.params.id, function(err, user) {
+    if (err) return next(err);
+    res.send(user);
+  });
+});*/
 
 app.post('/api/shows', function(req, res, next) {
   var apiKey = '9EF1D1E7D28FDA0B';
@@ -71,7 +91,7 @@ app.post('/api/shows', function(req, res, next) {
         parser.parseString(body, function(err, result) {
           var series = result.data.series;
           var episodes = result.data.episode;
-          console.log("Fetched Serie :"+series.seriesname+
+          console.log("Fetched Serie :"+series.seriesname+" "+series.id+
               "\n aired on "+series.airs_dayofweek+" at "+ series.airs_time+
               "\n First Aired on "+series.firstaired+
               "\n Belongs to genere "+ series.genre);
@@ -85,7 +105,18 @@ app.post('/api/shows', function(req, res, next) {
             network: series.network,
             overview: series.overview,
             poster: series.poster,
+            rating: series.rating,
+            episodes: []
           });
+            _.each(episodes, function(episode) {
+                show.episodes.push({
+                    season: episode.seasonnumber,
+                    episodeNumber: episode.episodenumber,
+                    episodeName: episode.episodename,
+                    firstAired: episode.firstaired,
+                    overview: episode.overview
+                });
+            });
           callback(err, show);
         });
       });
@@ -132,7 +163,15 @@ var showSchema = new mongoose.Schema({
   genre: [String],
   network: String,
   overview: String,
-  poster: String
+  poster: String,
+  rating: Number,
+  episodes: [{
+        season: Number,
+        episodeNumber: Number,
+        episodeName: String,
+        firstAired: Date,
+        overview: String
+  }]
 });
 
 var userSchema = new mongoose.Schema({
@@ -145,4 +184,9 @@ var userSchema = new mongoose.Schema({
 var User = mongoose.model('User', userSchema);
 var Show = mongoose.model('Show', showSchema);
 
-mongoose.connect('localhost');
+mongoose.connect('mongodb://localhost:27017/BuzzBeeper');//initially 'localhost'
+var db = mongoose.connection;
+db.on("error", console.error.bind(console, "Connection error:"));
+db.once("open", function(callback){
+console.log("Connection Succeeded."); /* Once the database connection has succeeded, the code in db.once is executed. */
+});

@@ -1,6 +1,5 @@
 angular.module('MyApp')
     .controller('AddCtrl', ['$scope', '$alert', 'Show', function($scope, $alert, Show) {
-        console.log("please chal ja")
         $scope.addShow = function() {
             Show.save({ showName: $scope.showName },
                 function() {

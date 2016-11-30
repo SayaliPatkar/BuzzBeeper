@@ -24,21 +24,9 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <style>
-        #pArrowPane
-        {
-            color: wheat;
-            height: 169px;
-            margin-top: 59px;
-            width: 400px;
-            margin-left: 445px;
-        }
-        #ploginPane
-        {
-            color: wheat;
-            height: 169px;
-            margin-top: 59px;
-            width: 400px;
-            margin-left: 445px;
+        .container {
+
+        margin-top: 500px;
         }
     </style>
     <script>
@@ -54,10 +42,28 @@
 
 <script src=../javascripts/app.js></script>
 
-
-<br>
-<br>
-<table id="createList" >
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            {{headingTitle}}
+        </div>
+        <div class="panel-body">
+            <div class="row show-list">
+                <div class="col-xs-4 col-md-3" ng-repeat="show in shows" >
+                   <div data-match-route="/shows/{{show._id}}">
+                       <a href="/shows/{{show._id}}">
+                        <img class="img-rounded" ng-src="{{show.poster}}" width="100%"/>
+                    </a>
+                    <div class="text-center">
+                        <a href="/shows/{{show._id}}">{{show.name}}</a>
+                        <p class="text-muted">Network : {{show.network}}</p>
+                    </div>
+                       </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 </table>
