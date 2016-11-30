@@ -9,7 +9,7 @@
 /*var fdatabase = firebase.database().ref('feedback_web');
 var usersdata = firebase.database().ref('userlist');*/
 
-var loggedinUser = firebase.auth().currentUser;
+//var loggedinUser = firebase.auth().currentUser;
 
 function logout(){
     firebase.auth().signOut().then(function() {
@@ -17,9 +17,9 @@ function logout(){
     }, function(error) {
         console.error('Sign Out Error', error);
     });
-    window.location = "http://localhost:3000/";
 }
 
+/*
 function handleSignUp(){
     var email = document.getElementById('emailSignUp').value;
     var password1 = document.getElementById('passwordSignUp1').value;
@@ -109,4 +109,4 @@ function sendEmailVerification() {
         alert('Please verify your Email!!');
     });
 
-}
+}*/
