@@ -1,22 +1,54 @@
-<div class="container">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <div class="pull-right">
-                <input class="search" type="text" ng-model="query.name" placeholder="Search...">
-            </div>
-        </div>
-        <div class="panel-body">
-            <div class="row show-list">
-                <div class="fade-repeat col-xs-4 col-md-3" ng-repeat="show in shows | filter:query | orderBy:'rating':true">
-                    <a href="/shows/{{show._id}}">
-                        <img class="img-rounded" ng-src="{{show.poster}}" width="100%"/>
-                    </a>
-                    <div class="text-center">
-                        <a href="/shows/{{show._id}}">{{show.name}}</a>
-                        <p class="text-muted">Episodes: {{show.episodes.length}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>S
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #upleft {
+            width:100%;
+            height:100%;
+            background:red;
+            float:left;
+        }
+
+        #upright {
+            width:20%;
+            height:100%;
+            background:black;
+            float:left
+        }
+        #below {
+            width:100%;
+            height:100%;
+            background:grey
+        }
+    </style>
+</head>
+<body>
+<table border="2" width="1200" height="531">
+    <tr>
+        <td width="25%%" valign="top">
+            <a href= "channels.html"><h2>Series</h2></a>
+
+            <p><a href= "Demo1.html">Friends</a></p>
+            <p><a href= "Demo2.html">Games of Thrones</a></p>
+            <p><a href= "Demo3.html">Arrow</a></p>
+            <p><a href= "Demo4.html">Dexter</a></p>
+            <p><a href= "Demo5.html">Grey's Anatomy</a></p>
+            <p><a href= "Demo6.html">Quantico</a></p>
+        </td>
+
+        <td width="800" >
+            <img src= "../images/Demo1.jpg">
+            <img src= "../images/Demo2.jpg">
+            <img src= "../images/Demo3.jpg">
+            <img src= "../images/Demo4.jpg">
+            <img src= "../images/Demo5.jpg">
+            <img src="../images/Demo6.jpg">
+        </td>
+        </td>
+
+    </tr>
+</table>
+</body>
+</html>
