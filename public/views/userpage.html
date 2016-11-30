@@ -61,14 +61,16 @@
         </div>
         <div class="panel-body">
             <div class="row show-list">
-                <div class="col-xs-4 col-md-3" ng-repeat="show in shows">
-                    <a href="/shows/{{show._id}}">
+                <div class="col-xs-4 col-md-3" ng-repeat="show in shows" >
+                   <div data-match-route="/shows/{{show._id}}">
+                       <a href="/shows/{{show._id}}">
                         <img class="img-rounded" ng-src="{{show.poster}}" width="100%"/>
                     </a>
                     <div class="text-center">
                         <a href="/shows/{{show._id}}">{{show.name}}</a>
                         <p class="text-muted">Story : {{show.overview}}</p>
                     </div>
+                       </div>
                 </div>
             </div>
         </div>
