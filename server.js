@@ -51,11 +51,18 @@ app.get('/allshows', function(req, res) {
 
 
 app.get('/api/shows/:id', function(req, res, next) {
-    Show.findById(req.params.id, function(err, show) {
+  User.findById(req.params.id, function(err, show) {
     if (err) return next(err);
     res.send(show);
   });
 });
+
+/*app.get('/user/:id', function(req, res) {
+  Show.findById(req.params.id, function(err, user) {
+    if (err) return next(err);
+    res.send(user);
+  });
+});*/
 
 app.post('/api/shows', function(req, res, next) {
   var apiKey = '9EF1D1E7D28FDA0B';

@@ -4,7 +4,7 @@
 // Initialized Firebase in index.html
 
 angular.module('MyApp')
-    .controller('LoginCtrl', ['$scope','$location', '$rootScope', function($scope,$location,$rootScope) {
+    .controller('LoginCtrl', ['$scope','$location', '$rootScope', '$timeout', 'User', function($scope,$location,$rootScope,$timeout,User) {
         $scope.login = function() {
             var email = $scope.email;
             var password = $scope.password;
@@ -17,8 +17,6 @@ angular.module('MyApp')
             }
             firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
                 $location.path('/userpage');
-
-                console.log('Welcome user!!');
             }, function(error) {
                 // Handle Errors here.
                 var errorCode = error.code;
@@ -32,4 +30,15 @@ angular.module('MyApp')
                 console.log(error);
             });
         };
+        firebase.auth().onAuthStateChanged(function(user){
+            if(user){
+                $timeout(function() {
+                    $scope.success = true;
+                    $scope.failure = false;
+                });
+                User.currentUser = user;
+                console.log("Welcome "+ user.email)
+            }else{}
+        });
+
     }]);
