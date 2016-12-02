@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link href='../css/Logo.css' rel='stylesheet' type='text/css'>
+    <link href='../css/TextOnImage.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../css/footer.css" type="text/css" />
+    <link rel="stylesheet" href="../css/navbar.css" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <style>
+        .container {
+
+            margin-top: 500px;
+        }
+    </style>
+    <script>
+        $("#imgholder").click(function() {
+            window.scrollBy(0,600);
+        });
+    </script>
+    <link rel="stylesheet" href="../css/JsonSubscribed.css">
+    <link rel="stylesheet" href="../css/button.css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+</head>
+
+<body style="background-color:black; overflow: scroll" data-spy="scroll" data-target=".navbar">
+
+<script src=../javascripts/app.js></script>
+
+
+<script src=../javascripts/app.js></script>
+
+<div class="jumbotron">
+    <div class="container">
+        <ul class="channels">
+            <li ng-repeat="channel in channels">
+                <span ng-click="filterByChannel(channel)"><a href="#">{{channel}}</a></span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{headingTitle}}
+            </div>
+            <div class="row show-list">
+                <div class="col-xs-4 col-md-3" ng-repeat="show in shows" >
+                    <div data-match-route="/shows/{{show._id}}">
+                        <a href="/shows/{{show._id}}">
+                            <img class="img-rounded" ng-src="{{show.poster}}" width="100%"/>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
+

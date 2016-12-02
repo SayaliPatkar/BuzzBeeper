@@ -34,6 +34,10 @@ angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mg
                 templateUrl: 'views/channels.html',
                 controller: 'channelctrl'
             })
+            .when('/ChannelTest', {
+                templateUrl: 'views/ChannelTest.html',
+                controller: 'chnltstCtrl'
+            })
             .when('/show', {
                 templateUrl: 'views/show.html',
                 controller: 'ShowCtrl'
@@ -42,3 +46,4 @@ angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mg
                 redirectTo: '/'
             });
     }]);
+
