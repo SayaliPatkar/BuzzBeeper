@@ -38,7 +38,11 @@ angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mg
                 templateUrl: 'views/ChannelTest.html',
                 controller: 'chnltstCtrl'
             })
-            .when('/show', {
+            .when('/shows', {
+                templateUrl: 'views/show.html',
+                controller: 'ShowCtrl'
+            })
+            .when('/shows/:id', {
                 templateUrl: 'views/show.html',
                 controller: 'ShowCtrl'
             })
