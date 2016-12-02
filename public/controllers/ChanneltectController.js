@@ -8,11 +8,8 @@ angular.module('MyApp')
         $scope.headingTitle = 'All Shows from given network';
 
         $scope.filterByChannel = function(channel) {
-
-
             $scope.shows = Show.query({network:channel});
             console.log(shows);
-
         };
 
     }]);
