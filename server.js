@@ -23,9 +23,6 @@ app.listen(app.get('port'), function() {
 
 app.get('/api/shows', function(req, res, next) {
   var query = Show.find();
-  console.log(
-
-      "in get show method");
   console.log(req.query.network);
   if(req.query.network){
     query.where({ network: req.query.network });
@@ -51,7 +48,7 @@ app.get('/allshows', function(req, res) {
 
 
 app.get('/api/shows/:id', function(req, res, next) {
-  User.findById(req.params.id, function(err, show) {
+  Show.findById(req.params.id, function(err, show) {
     if (err) return next(err);
     res.send(show);
   });
