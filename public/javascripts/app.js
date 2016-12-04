@@ -1,6 +1,4 @@
-/**
- * Created by SAYALI on 16-11-2016.
- */
+
 angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mgcrea.ngStrap'])
     .config(['$locationProvider','$routeProvider',function($locationProvider, $routeProvider) {
         $locationProvider.html5Mode(true);
@@ -31,18 +29,13 @@ angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mg
                 controller: 'contactCtrl'
             })
             .when('/channels', {
-                templateUrl: 'views/ChannelTest.html',
-                controller: 'chnltstCtrl'
+                templateUrl: 'views/channels.html',
+                controller: 'channelctrl'
             })
-            .when('/ChannelTest', {
-                templateUrl: 'views/ChannelTest.html',
-                controller: 'chnltstCtrl'
+            .when('/chatroom', {
+                templateUrl: 'views/chatroom.html',
             })
-            .when('/shows', {
-                templateUrl: 'views/show.html',
-                controller: 'ShowCtrl'
-            })
-            .when('/shows/:id', {
+            .when('/show', {
                 templateUrl: 'views/show.html',
                 controller: 'ShowCtrl'
             })
@@ -50,4 +43,3 @@ angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mg
                 redirectTo: '/'
             });
     }]);
-
