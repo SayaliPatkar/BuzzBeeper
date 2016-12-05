@@ -30,12 +30,9 @@ angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mg
                 templateUrl: 'views/contactus.html',
                 controller: 'contactCtrl'
             })
-            .when('/channels', {
-                templateUrl: 'views/ChannelTest.html',
-                controller: 'chnltstCtrl'
-            })
-            .when('/ChannelTest', {
-                templateUrl: 'views/ChannelTest.html',
+
+            .when('/channel', {
+                templateUrl: 'views/channel.html',
                 controller: 'chnltstCtrl'
             })
             .when('/shows', {

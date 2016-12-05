@@ -20,17 +20,17 @@
         <td valign="below" align="left">
             <ul style="margin-top: -101px;   "><h3 class="style1">
                 <ul class="txt1"><u><strong>&#9673;Name:</strong></u>&nbsp;&nbsp;{{show.name}}</ul><br>
-               <ui class="txt2" style="margin-bottom: 2px"><u><strong>&#9716;Air Time:</strong></u>&nbsp;&nbsp;{{show.airsTime}}</ui><br>
-                <ui class="txt2" style="margin-bottom: 2px"><u><strong>&#9716;Air Days:</strong></u>&nbsp;&nbsp;{{show.airsDayOfWeek.toString()}}</ui><br>
+               <ui class="txt2" style="margin-bottom: 2px"><u><strong>Air Time:</strong></u>&nbsp;&nbsp;{{show.airsTime}}</ui><br>
+                <ui class="txt2" style="margin-bottom: 2px"><u><strong>Air Days:</strong></u>&nbsp;&nbsp;{{show.airsDayOfWeek.toString()}}</ui><br>
 
-                <ul class="txt2" style="margin-left: -39px; margin-top: 8px;"><u><strong>&#9636;Genre:</strong></u>&nbsp;&nbsp;{{show.genre.toString()}}</ul><br>
-                <ul class="txt2" style="margin-left: -39px;margin-top: -6px;"><u><strong>&#9664;First Aired:</strong></u>&nbsp;&nbsp;{{show.firstAired.toString().slice(0,10)}}</ul><br>
-                <ui class="txt2" style="margin-top: -10px;"><u><strong>&#9634;Network:</strong></u>&nbsp;&nbsp;{{show.network}}</ui><br>
-                <ul class="txt2" style="margin-left: -39px; margin-top: 15px"><u><strong>&#9654;Overview:</strong></u>&nbsp;&nbsp;{{show.overview.toString()}}</ul><br>
+                <ul class="txt2" style="margin-left: -39px; margin-top: 8px;"><u><strong>Genre:</strong></u>&nbsp;&nbsp;{{show.genre.toString()}}</ul><br>
+                <ul class="txt2" style="margin-left: -39px;margin-top: -6px;"><u><strong>First Aired:</strong></u>&nbsp;&nbsp;{{show.firstAired.toString().slice(0,10)}}</ul><br>
+                <ui class="txt2" style="margin-top: -10px;"><u><strong>Network:</strong></u>&nbsp;&nbsp;{{show.network}}</ui><br>
+                <ul class="txt2" style="margin-left: -39px; margin-top: 15px"><u><strong>Overview:</strong></u>&nbsp;&nbsp;{{show.overview.toString()}}</ul><br>
 
 
             </h3></ul>
-            <div class="text-center" ng-if="!currentUser">
+            <div class="text-center" ng-if="currentUser">
                 <div ng-show="!isSubscribed()">
                     <button ng-click="subscribe()" class="btn btn-block btn-success">
                         <span class="glyphicon glyphicon-plus"></span> Subscribe
@@ -42,7 +42,7 @@
                     </button>
                 </div>
             </div>
-            <div class="text-center" ng-show="currentUser">
+            <div class="text-center" ng-show="!currentUser">
                 <a class="btn btn-block btn-primary" href="/$">Login to Subscribe</a>
             </div>
 
