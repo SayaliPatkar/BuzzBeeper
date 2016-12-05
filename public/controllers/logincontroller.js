@@ -37,6 +37,7 @@ angular.module('MyApp')
                     $scope.failure = false;
                 });
                 User.currentUser = user;
+                $cookieStore.put('user',user);
                 console.log("Welcome "+ user.email)
             }else{}
         });
