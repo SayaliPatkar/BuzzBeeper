@@ -7,8 +7,10 @@ var async = require('async');
 var request = require('request');
 var xml2js = require('xml2js');
 var _ = require('lodash');
+var app= require ('express')();
+var http= require('http').Server(app);
+var io = require('socket.io')(http);
 
-var app = express();
 
 app.set('port', process.env.PORT || 3000);
 app.use(logger('dev'));
@@ -21,24 +23,41 @@ app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
 
+app.get('/',function(req,res){
+  res.sendFile(__dirname+'/chatroom.html');
+
+});
+
+
+io.on('connection', function(socket){
+    socket.on('chatMessage',function(from,msg){
+        io.emit('chatMessage',from,msg);
+    });
+    socket.on('notifyUser', function(user){
+        io.emit('notifyUser',user);
+    });
+
+});
+
+
+
+
+
 app.get('/api/shows', function(req, res, next) {
   var query = Show.find();
-  console.log(req.query.network);
   if(req.query.network){
     query.where({ network: req.query.network });
   }
   else {
-    console.log("in /api/shows")
+    console.log("in /api/shows");
     query.limit(12);
   }
   query.exec(function(err, shows) {
     if (err) return next(err);
     res.send(shows);
-    console.log("Showing response data form /api/shows "+res)
+    console.log("Showing response data form /api/shows "+res);
   });
 });
-
-
 
 app.get('/allshows', function(req, res) {
   Show.find(function(err, users){
@@ -46,9 +65,8 @@ app.get('/allshows', function(req, res) {
   });
 });
 
-
 app.get('/api/shows/:id', function(req, res, next) {
-  Show.findById(req.params.id, function(err, show) {
+  User.findById(req.params.id, function(err, show) {
     if (err) return next(err);
     res.send(show);
   });
