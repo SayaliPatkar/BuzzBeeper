@@ -12,19 +12,18 @@ angular.module('MyApp')
             }
             firebase.auth().createUserWithEmailAndPassword(email, password1).then(function(){
                     User.save({id : email});
+                    alert('You have been registered with us! Login again to use services');
+                    $location.path('/login');
             }, function(error) {
-                // Handle Errors here.
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                // [START_EXCLUDE]
                 if (errorCode == 'auth/weak-password') {
                     alert('The password is too weak.');
                 } else {
                     alert(errorMessage);
                 }
                 console.log(error);
-                // [END_EXCLUDE]
             });
-            $location.path('/login');
+
         };
     }]);

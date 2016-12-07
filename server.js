@@ -33,10 +33,6 @@ app.get('/api/shows', function(req, res, next) {
     console.log(req.query.user);
     query.where({ subscribers:req.query.user });
   }
-  else {
-    console.log("in /api/shows")
-    query.limit(12);
-  }
   query.exec(function(err, shows) {
     if (err) return next(err);
     res.send(shows);
@@ -200,7 +196,7 @@ console.log("Connection Succeeded."); /* Once the database connection has succee
 });
 
 app.post('/api/subscribe', function(req, res, next) {
-    console.log("in post /api/subscribe"+ req.body.showId+" "+req.body.userId)
+    console.log("in post /api/subscribe"+ req.body.showId+" "+req.body.userId);
   Show.findById(req.body.showId, function(err, show) {
     if (err) return next(err);
       console.log("show found "+show.name +" has subscribers initially "+show.subscribers);
@@ -211,4 +207,18 @@ app.post('/api/subscribe', function(req, res, next) {
       res.send(200);
     });
   });
+});
+
+app.post('/api/unsubscribe', function(req, res, next) {
+    console.log("in post /api/unsubscribe"+ req.body.showId+" "+req.body.userId);
+    Show.findById(req.body.showId, function(err, show) {
+        if (err) return next(err);
+        console.log("show found "+show.name +" has subscribers initially "+show.subscribers);
+        var index = show.subscribers.indexOf(req.body.userId);
+        show.subscribers.splice(index, 1);
+        show.save(function(err) {
+            if (err) return next(err);
+            res.send(200);
+        });
+    });
 });

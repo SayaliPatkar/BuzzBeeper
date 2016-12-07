@@ -129,7 +129,7 @@ body::after {
 h1 {
     margin: 0;
     height: 12vmin;
-    width: 120vmin;
+    width: 95vmin;
     display: flex;
     justify-content: center;
     position: relative;
@@ -141,7 +141,7 @@ h1::before {
     position: absolute;
     z-index: -1;
     top: -22vmin;
-    left: 30vmin;
+    left: 21vmin;
     width: 30vmin;
     height: 36vmin;
     box-sizing: border-box;
@@ -154,7 +154,7 @@ em {
     color: currentcolor;
     position: relative;
     font-style: normal;
-    width: 10vmin;
+    width: 8vmin;
     text-align: center;
     font-size: 11vmin;
 }

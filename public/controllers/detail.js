@@ -7,7 +7,6 @@ angular.module('MyApp')
           return $scope.show.subscribers.indexOf($rootScope.currentUser._id) !== -1;
         };
 
-
         $scope.nextEpisode = show.episodes.filter(function(episode) {
           return new Date(episode.firstAired) > new Date();
         })[0];

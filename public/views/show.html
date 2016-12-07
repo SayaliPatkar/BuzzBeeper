@@ -36,6 +36,11 @@
                         <span class="glyphicon glyphicon-plus"></span> Subscribe
                     </button>
                 </div>
+                <div ng-show="isSubscribed()">
+                    <button ng-click="unsubscribe()" class="btn btn-block btn-danger">
+                        <span class="glyphicon glyphicon-minus"></span> Unsubscribe
+                    </button>
+                </div>
             </div>
             <div class="text-center" ng-show="!userid">
                 <a class="btn btn-block btn-primary" href="/$">Login to Subscribe</a>

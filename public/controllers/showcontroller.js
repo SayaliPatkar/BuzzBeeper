@@ -20,8 +20,8 @@ angular.module('MyApp')
                 };
 
                 $scope.unsubscribe = function() {
-                    Subscription.unsubscribe(show,userid).success(function() {
-                        var index = $scope.show.subscribers.indexOf($rootScope.currentUser._id);
+                    Subscription.unsubscribe(show,$scope.userid).success(function() {
+                        var index = $scope.show.subscribers.indexOf($scope.userid);
                         $scope.show.subscribers.splice(index, 1);
                     });
                 };

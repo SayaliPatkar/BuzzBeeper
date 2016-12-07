@@ -69,6 +69,7 @@
 <script src="javascripts/user.js"></script>
 <script src="javascripts/Authentication.js"></script>
 <script src="javascripts/subscription.js"></script>
+<script src="controllers/logoutController.js"></script>
 
 <nav class="navbar navbar-custom navbar-fixed-top ">
     <div class="container-fluid  " >
@@ -79,23 +80,25 @@
                 <span class="icon-bar"></span>
             </button>
             <h1 >
-                <em style="font-size: 25px !important;" >B</em>
-                <em  style="font-size: 35px !important;" class="planet left">U</em>
-                <em style="font-size: 25px !important;">Z</em>
-                <em style="font-size: 25px !important;">Z</em>
-                <em  style="font-size: 35px !important;" class="planet right">B</em>
-                <em style="font-size: 25px !important;">E</em>
-                <em style="font-size: 25px !important;">P</em>
-                <em style="font-size: 25px !important;">E</em>
-                <em style="font-size: 25px !important;">R</em>
+                <em style="font-size: 20px !important;" >B</em>
+                <em  style="font-size: 30px !important;" class="planet left">U</em>
+                <em style="font-size: 20px !important;">Z</em>
+                <em style="font-size: 20px !important;">Z</em>
+                <em  style="font-size: 30px !important;" class="planet right">B</em>
+                <em style="font-size: 20px !important;">E</em>
+                <em style="font-size: 20px !important;">P</em>
+                <em style="font-size: 20px !important;">E</em>
+                <em style="font-size: 20px !important;">R</em>
             </h1>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li data-match-route="/$"><a href="/">Home</a></li>
+                <li data-match-route="/$" ng-if="!userId"><a href="/">Home</a></li>
+                <li data-match-route="/userpage" ng-if="userId"><a href="/userpage">Home</a></li>
                 <li data-match-route="/channel"><a href="/channel">Channels</a></li>
                 <li data-match-route="/chatroom"><a href="/chatroom">ChatRoom</a></li>
                 <li data-match-route="/contactus"><a href="/contactus">Contact Us</a></li>
+                <li data-match-route="/logout" ng-if="userId"><a href="/logout">Logout</a></li>
             </ul>
         </div>
     </div>

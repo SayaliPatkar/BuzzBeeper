@@ -4,6 +4,4 @@
 angular.module('MyApp')
     .controller('contactCtrl', function() {
 
-
-
     });

@@ -52,8 +52,8 @@
 
 <script src=../javascripts/app.js></script>
 
-<div class="jumbotron" style=" margin-top: -390px; background-color: black">
-    <div class="nontoggelDiv" style="width: 22%; margin-top: 444px;background-color: black;">
+<div class="jumbotron" style=" margin-top: -390px; background-color: black;border-color: black">
+    <div class="nontoggelDiv" style="width: 22%; margin-top: 600px;background-color: black;">
         <div class="container" style="    margin-top: -150px">
             <ul class="channels">
                 <li ng-repeat="channel in channels">
@@ -64,11 +64,11 @@
     </div>
     <div class="toggelDiv" style="width: 80%;margin-left: 240px;margin-right: -59px;">
         <div class="container" style="width: 81%;margin-top: -209px;">
-            <div class="panel panel-default">
-                <div class="panel-heading" id="headerr">
+            <div class="panel panel-default" style="background-color: black;    border-color: black;">
+                <div class="panel-heading" id="headerr" style="color: white;font-family: sans-serif;background-color: black;border-color: black;">
                     {{headingTitle}}
                 </div>
-                <div class="row show-list" style="background-color: #1e1e1e">
+                <div class="row show-list" style="background-color: black;">
                     <div class="col-xs-4 col-md-3" ng-repeat="show in shows" >
                         <div data-match-route="/shows/{{show._id}}">
                             <a href="/shows/{{show._id}}">

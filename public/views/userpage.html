@@ -26,7 +26,7 @@
     <style>
         .container {
 
-        margin-top: 500px;
+        margin-top: 400px;
         }
     </style>
     <script>
@@ -42,13 +42,13 @@
 
 <script src=../javascripts/app.js></script>
 
-<div class="container">
-    <div class="panel panel-default">
-        <div class="panel-heading">
+<div class="container" >
+    <div class="panel panel-default" style="background-color: black; border-color: black !important;">
+        <div class="panel-heading" style="color: white;font-family: sans-serif;background-color: black;border-color: black;">
             {{headingTitle}}
         </div>
-        <div class="panel-body">
-            <div class="row show-list">
+        <div class="panel-body" style="padding: 15px;background-color: black;border-color: black;">
+            <div class="row show-list" style="background-color: black;">
                 <div class="col-xs-4 col-md-3" ng-repeat="show in shows" >
                    <div data-match-route="/shows/{{show._id}}">
                        <a href="/shows/{{show._id}}">

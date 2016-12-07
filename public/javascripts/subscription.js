@@ -8,7 +8,7 @@ angular.module('MyApp')
                 return $http.post('/api/subscribe', { showId: show._id, userId:userid });
             },
             unsubscribe: function(show, userid) {
-                return $http.post('/api/unsubscribe', { showId: show._id });
+                return $http.post('/api/unsubscribe', { showId: show._id, userId:userid });
             }
         };
     }]);

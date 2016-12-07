@@ -72,16 +72,20 @@ angular.module('MyApp')
                         });
                 },
                 logout: function() {
-                    return $http.get('/api/logout').success(function() {
-                        $rootScope.currentUser = null;
-                        $cookieStore.remove('user');
-                        $alert({
-                            content: 'You have been logged out.',
-                            placement: 'top-right',
-                            type: 'info',
-                            duration: 3
-                        });
-                    });
+                    return firebase.auth().signOut().then(function() {
+                            console.log('Signed Out the old user!!');
+                            $rootScope.userId=null;
+                            $location.path('/home');
+                            $alert({
+                                content: 'You have been logged out.',
+                                placement: 'top-right',
+                                type: 'info',
+                                duration: 3
+                            });
+                        }, function(error) {
+                            console.error('Sign Out Error', error);
+                        }
+                    );
                 }
             };
         }]);

@@ -43,7 +43,6 @@ angular.module('MyApp')
                     $scope.success = true;
                     $scope.failure = false;
                 });
-                User.currentUser = user;
                 console.log("Welcome "+ user.email)
             }else{}
         });
