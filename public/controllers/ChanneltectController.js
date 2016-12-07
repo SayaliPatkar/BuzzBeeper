@@ -9,7 +9,6 @@ angular.module('MyApp')
 
         $scope.filterByChannel = function(channel) {
             $scope.shows = Show.query({network:channel});
-            console.log(shows);
         };
 
     }]);

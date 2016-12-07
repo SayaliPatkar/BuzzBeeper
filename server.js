@@ -25,9 +25,13 @@ app.listen(app.get('port'), function() {
 
 app.get('/api/shows', function(req, res, next) {
   var query = Show.find();
-  console.log(req.query.network);
   if(req.query.network){
+    console.log(req.query.network);
     query.where({ network: req.query.network });
+  }
+  if(req.query.user){
+    console.log(req.query.user);
+    query.where({ subscribers:req.query.user });
   }
   else {
     console.log("in /api/shows")
@@ -40,28 +44,12 @@ app.get('/api/shows', function(req, res, next) {
   });
 });
 
-
-
-app.get('/allshows', function(req, res) {
-  Show.find(function(err, users){
-      res.send(users)
-  });
-});
-
-
 app.get('/api/shows/:id', function(req, res, next) {
   Show.findById(req.params.id, function(err, show) {
     if (err) return next(err);
     res.send(show);
   });
 });
-
-/*app.get('/user/:id', function(req, res) {
-  Show.findById(req.params.id, function(err, user) {
-    if (err) return next(err);
-    res.send(user);
-  });
-});*/
 
 app.post('/api/shows', function(req, res, next) {
   var apiKey = '9EF1D1E7D28FDA0B';
@@ -148,6 +136,22 @@ app.post('/api/shows', function(req, res, next) {
   });
 });
 
+app.post('/api/user', function(req, res, next) {
+  var user = new User({
+    _id: req.body.id
+  })
+  user.save(function(err) {
+    if (err) {
+      if (err.code == 11000) {
+        return res.send(409, { message: show.name + ' already exists.' });
+      }
+      return next(err);
+    }
+    res.send(200);
+    console.log("saved "+ req.body.id);
+  });
+});
+
 app.use(function(err, req, res, next) {
   console.error(err.stack);
   res.send(500, { message: err.message });
@@ -171,6 +175,7 @@ var showSchema = new mongoose.Schema({
   overview: String,
   poster: String,
   rating: Number,
+  subscribers: [String],
   episodes: [{
         season: Number,
         episodeNumber: Number,
@@ -181,10 +186,7 @@ var showSchema = new mongoose.Schema({
 });
 
 var userSchema = new mongoose.Schema({
-  _id: {type: String, unique: true},
-  subscriptions : [{
-    type: mongoose.Schema.Types.ObjectId, ref: 'Show'
-  }]
+  _id: {type: String, unique: true}
 });
 
 var User = mongoose.model('User', userSchema);
@@ -197,3 +199,16 @@ db.once("open", function(callback){
 console.log("Connection Succeeded."); /* Once the database connection has succeeded, the code in db.once is executed. */
 });
 
+app.post('/api/subscribe', function(req, res, next) {
+    console.log("in post /api/subscribe"+ req.body.showId+" "+req.body.userId)
+  Show.findById(req.body.showId, function(err, show) {
+    if (err) return next(err);
+      console.log("show found "+show.name +" has subscribers initially "+show.subscribers);
+    show.subscribers.push(req.body.userId);
+      console.log("show has subscribers finally "+show.subscribers);
+    show.save(function(err) {
+      if (err) return next(err);
+      res.send(200);
+    });
+  });
+});

@@ -1,27 +1,26 @@
 angular.module('MyApp')
-    .controller('ShowCtrl', ['$scope', '$rootScope', '$routeParams', 'Show','User',
-        function($scope, $rootScope, $routeParams, Show, User) {
+    .controller('ShowCtrl', ['$scope', '$rootScope', '$routeParams', 'Show','User','Subscription',
+        function($scope, $rootScope, $routeParams, Show, User,Subscription) {
             console.log($routeParams.id );
             Show.get({ _id: $routeParams.id }, function(show) {
 
                 $scope.show = show;
 
-                $rootScope.currentUser = $cookieStore.get('user');
-
+                $scope.userid=$rootScope.userId;
 
                 $scope.isSubscribed = function() {
 
-                    return $scope.show.subscribers.indexOf($rootScope.currentUser._id) !== -1;
+                    return $scope.show.subscribers.indexOf($scope.userid) !== -1;
                 };
 
                 $scope.subscribe = function() {
-                    Subscription.subscribe(show).success(function() {
-                        $scope.show.subscribers.push($rootScope.currentUser._id);
+                    Subscription.subscribe(show,$scope.userid).success(function() {
+                        $scope.show.subscribers.push($scope.userid);
                     });
                 };
 
                 $scope.unsubscribe = function() {
-                    Subscription.unsubscribe(show).success(function() {
+                    Subscription.unsubscribe(show,userid).success(function() {
                         var index = $scope.show.subscribers.indexOf($rootScope.currentUser._id);
                         $scope.show.subscribers.splice(index, 1);
                     });

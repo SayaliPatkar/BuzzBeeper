@@ -3,7 +3,6 @@
  */
 angular.module('MyApp')
     .factory('User', ['$resource', function($resource) {
-        var currentUser;
-        return $resource('/user/:_id');
+        return $resource('/api/user/:_id');
 
     }]);
