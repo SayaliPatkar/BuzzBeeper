@@ -96,7 +96,7 @@
                 <li data-match-route="/$" ng-if="!userId"><a href="/">Home</a></li>
                 <li data-match-route="/userpage" ng-if="userId"><a href="/userpage">Home</a></li>
                 <li data-match-route="/channel"><a href="/channel">Channels</a></li>
-                <li data-match-route="/chatroom"><a href="/chatroom">ChatRoom</a></li>
+                <li data-match-route="/chat" ng-if="userId"><a href="/chat">ChatRoom</a></li>
                 <li data-match-route="/contactus"><a href="/contactus">Contact Us</a></li>
                 <li data-match-route="/logout" ng-if="userId"><a href="/logout">Logout</a></li>
             </ul>
