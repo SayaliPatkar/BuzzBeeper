@@ -35,7 +35,10 @@ angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mg
                 templateUrl: 'views/contactus.html',
                 controller: 'contactCtrl'
             })
-
+            .when('/chat', {
+                templateUrl: 'views/chatroom.html',
+                controller: 'ChatCtrl'
+            })
             .when('/channel', {
                 templateUrl: 'views/channel.html',
                 controller: 'chnltstCtrl'

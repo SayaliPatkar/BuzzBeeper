@@ -1,9 +1,92 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <title>ChatRoom</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script>
+        var socket = io('http://localhost:3000');
+        var people = {};
+        function submitButtonOnclick(){
+            var from = $('#user').val();
+            var message = $('#inputBox').val();
+            if(message != '') {
+                socket.emit('chatMessage', from, message);
+            }
+            $('#inputBox').val('').focus();
+            return false;
+        }
+
+        function notifyOfTyping() {
+            var user = $('#user').val();
+            socket.emit('notifyUser', user);
+        }
+
+        socket.on('chatMessage', function(from, msg){
+            var me = $('#user').val();
+            var color = (from == me) ? 'green' : '#009afd';
+            var from = (from == me) ? 'Me' : from;
+            $('#messages').append('<li><b style="color:' + color + '">' + from + '</b> ' +'<strong style="color: #d54d7b; font-size: 14px;font-family: sans-serif">'+ msg +'</strong>'+ '</li>');
+        });
+
+        socket.on('notifyUser', function(user){
+            var me = $('#user').val();
+            if(user != me) {
+                $('#notifyUser').text(user + ' is typing ...');
+            }
+            setTimeout(function(){ $('#notifyUser').text(''); }, 10000);;
+        }
+        );
+
+        $(document).ready(function(){
+            var person = prompt("Please enter your chat name", "Harry Potter");
+            var name=null;
+            if (person != "") {
+                name = person;
+            }
+            else{
+                name = generateId();
+            }
+            //console.log("From chat controller "+userIdentif)
+
+            $('#user').val(name);
+            socket.emit('chatMessage', 'User', '<b>' + name + '</b> has joined the discussion');
+        });
+
+        function generateId(){
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+            for( var i=0; i < 5; i++ ) {
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+            }
+            return text;
+        }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font: 13px Helvetica, Arial; }
+        form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 50%; margin-left: -13px;}
+        form input { border: 0; padding: 10px; width: 53%; margin-right: .5%; }
+        form #button { color:#FFF; background: #2D9F0B; border: none; padding: 10px;  width: 9%; }
+        #messages { list-style-type: none; margin: 0; padding: 0; }
+        #messages li { padding: 5px 10px; }
+
+        #notifyUser { position: fixed; bottom: 42px; width: 100%; }
+    </style>
 
 </head>
 
 <body>
+<ul id="messages"></ul>
+<span id="notifyUser"></span>
 
+<form id="form" action="" onsubmit="return submitButtonOnclick();" >
+    <input type="hidden" id="user" value=""/>
+    <input id="inputBox" autocomplete="off" onkeyup="notifyOfTyping();" placeholder="Type..." />
+    <input type="submit" id="button" value="Send"/>
+</form>
 </body>

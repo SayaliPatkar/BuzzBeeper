@@ -1,7 +1,8 @@
+
 var express = require('express');
 var path = require('path');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
+//var logger = require('morgan');
+//var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var async = require('async');
 var request = require('request');
@@ -13,15 +14,32 @@ var app = express();
 
 
 app.set('port', process.env.PORT || 3000);
-app.use(logger('dev'));
+//app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use(cookieParser());
+//app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.listen(app.get('port'), function() {
+//Socket io code start
+var httpServer= require('http').createServer(app);
+var io = require('socket.io')(httpServer);
+
+httpServer.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+io.on('connection', function(socket){
+ socket.on('chatMessage',function(from,msg){
+    io.emit('chatMessage',from,msg);
+  });
+  socket.on('notifyUser', function(user){
+    io.emit('notifyUser',user);
+  });
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+ });
+//Socket io code ends
 
 app.get('/api/shows', function(req, res, next) {
   var query = Show.find();
@@ -33,11 +51,13 @@ app.get('/api/shows', function(req, res, next) {
     console.log(req.query.user);
     query.where({ subscribers:req.query.user });
   }
-  query.exec(function(err, shows) {
-    if (err) return next(err);
-    res.send(shows);
-    console.log("Showing response data form /api/shows "+res)
-  });
+  if(req.query.user || req.query.network){
+    query.exec(function(err, shows) {
+      if (err) return next(err);
+      res.send(shows);
+      console.log("Showing response data form /api/shows "+res)
+    });
+  }
 });
 
 app.get('/api/shows/:id', function(req, res, next) {
@@ -67,6 +87,7 @@ app.post('/api/shows', function(req, res, next) {
       request.get('http://thetvdb.com/api/GetSeries.php?seriesname=' + seriesName, function(error, response, body) {
         if (error) return next(error);
         parser.parseString(body, function(err, result) {
+          console.log(result.toString())
           if (!result.data.series) {
             return res.send(404, { message: req.body.showName + ' was not found.' });
           }
@@ -76,6 +97,7 @@ app.post('/api/shows', function(req, res, next) {
       });
     },
     function(seriesId, callback) {
+      console.log("got series id "+ seriesId)
       request.get('http://thetvdb.com/api/' + apiKey + '/series/' + seriesId + '/all/en.xml', function(error, response, body) {
         if (error) return next(error);
         parser.parseString(body, function(err, result) {
