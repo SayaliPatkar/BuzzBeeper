@@ -104,7 +104,7 @@ app.post('/api/shows', function(req, res, next) {
           var series = result.data.series;
           var episodes = result.data.episode;
           console.log("Fetched Serie :"+series.seriesname+" "+series.id+
-              "\n aired on "+series.airs_dayofweek+" at "+ series.airs_time+
+              "\n aired on "+series.airs_dayofweek+" at "+ series.airs_time+" on "+series.network+
               "\n First Aired on "+series.firstaired+
               "\n Belongs to genere "+ series.genre);
           var show = new Show({
