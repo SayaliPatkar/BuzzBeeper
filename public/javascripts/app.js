@@ -43,10 +43,6 @@ angular.module('MyApp', ['ngCookies', 'ngResource', 'ngMessages', 'ngRoute', 'mg
                 templateUrl: 'views/channel.html',
                 controller: 'chnltstCtrl'
             })
-            .when('/shows', {
-                templateUrl: 'views/show.html',
-                controller: 'ShowCtrl'
-            })
             .when('/logout', {
                 templateUrl: 'views/logout.html',
                 controller: 'LogoutCtrl'

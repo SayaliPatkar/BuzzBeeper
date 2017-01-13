@@ -16,7 +16,12 @@ angular.module('MyApp')
              });
              }
              firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
+                 /*//written on 6-12-17 for cookie issue
+                  to store login info
+                  used for functionalities user home page, subscribe, unsubscribe */
                  $rootScope.userId =email;
+
+                 //redirect to user home page
              $location.path('/userpage');
              }, function(error) {
              // Handle Errors here.
@@ -31,11 +36,7 @@ angular.module('MyApp')
              console.log(error);
              });
 
-            /*//written on 6-12-17 for cookie issue
-            Authenticate.login({
-                email: $scope.email,
-                password: $scope.password
-            });*/
+
         };
         firebase.auth().onAuthStateChanged(function(user){
             if(user){

@@ -28,7 +28,7 @@
                 <ui class="txt2" style="margin-top: -10px;"><u><strong>Network:</strong></u>&nbsp;&nbsp;{{show.network}}</ui><br>
                 <ul class="txt2" style="margin-left: -39px; margin-top: 15px"><u><strong>Overview:</strong></u>&nbsp;&nbsp;{{show.overview.toString()}}</ul><br>
 
-
+            <!--subscribe/unsubscribe functionality -->
             </h3></ul>
             <div class="text-center" ng-if="userid">
                 <div ng-show="!isSubscribed()">
@@ -42,6 +42,8 @@
                     </button>
                 </div>
             </div>
+
+            <!--if user is not logged in, show login button instead of subscribe/unsubscribe-->
             <div class="text-center" ng-show="!userid">
                 <a class="btn btn-block btn-primary" href="/$">Login to Subscribe</a>
             </div>

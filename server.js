@@ -17,7 +17,7 @@ app.set('port', process.env.PORT || 3000);
 //app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-//app.use(cookieParser());
+//directs to index.html
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Socket io code start
@@ -41,14 +41,17 @@ io.on('connection', function(socket){
  });
 //Socket io code ends
 
+
 app.get('/api/shows', function(req, res, next) {
   var query = Show.find();
   if(req.query.network){
     console.log(req.query.network);
+      //query for channels page
     query.where({ network: req.query.network });
   }
   if(req.query.user){
     console.log(req.query.user);
+      //query for user home page
     query.where({ subscribers:req.query.user });
   }
   if(req.query.user || req.query.network){
@@ -60,6 +63,7 @@ app.get('/api/shows', function(req, res, next) {
   }
 });
 
+//fetching single show by id : for show page
 app.get('/api/shows/:id', function(req, res, next) {
   Show.findById(req.params.id, function(err, show) {
     if (err) return next(err);
@@ -67,6 +71,7 @@ app.get('/api/shows/:id', function(req, res, next) {
   });
 });
 
+//async fetching from tvdb api
 app.post('/api/shows', function(req, res, next) {
   var apiKey = '9EF1D1E7D28FDA0B';
   console.log("inside post");
@@ -84,6 +89,7 @@ app.post('/api/shows', function(req, res, next) {
 
   async.waterfall([
     function(callback) {
+        //from here we send series name & get corresponding tvdb id
       request.get('http://thetvdb.com/api/GetSeries.php?seriesname=' + seriesName, function(error, response, body) {
         if (error) return next(error);
         parser.parseString(body, function(err, result) {
@@ -98,6 +104,7 @@ app.post('/api/shows', function(req, res, next) {
     },
     function(seriesId, callback) {
       console.log("got series id "+ seriesId)
+        //using series id + api key we get all show information
       request.get('http://thetvdb.com/api/' + apiKey + '/series/' + seriesId + '/all/en.xml', function(error, response, body) {
         if (error) return next(error);
         parser.parseString(body, function(err, result) {
@@ -120,6 +127,7 @@ app.post('/api/shows', function(req, res, next) {
             rating: series.rating,
             episodes: []
           });
+            //this information is collected in db but not used
             _.each(episodes, function(episode) {
                 show.episodes.push({
                     season: episode.seasonnumber,
@@ -191,9 +199,12 @@ var showSchema = new mongoose.Schema({
   genre: [String],
   network: String,
   overview: String,
+    /**image of the show, stored in base64 encoded format,
+     * as a string named poster
+     * as images can not be stored directly in database **/
   poster: String,
   rating: Number,
-  subscribers: [String],
+  subscribers: [String], //array of user ids who have subscribed to this show
   episodes: [{
         season: Number,
         episodeNumber: Number,
@@ -214,9 +225,11 @@ mongoose.connect('mongodb://localhost:27017/BuzzBeeper');//initially 'localhost'
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "Connection error:"));
 db.once("open", function(callback){
-console.log("Connection Succeeded."); /* Once the database connection has succeeded, the code in db.once is executed. */
+console.log("Connection Succeeded.");
+    /* Once the database connection has succeeded, the code in db.once is executed. */
 });
 
+//logic for subscribe & unsubscribe functionality
 app.post('/api/subscribe', function(req, res, next) {
     console.log("in post /api/subscribe"+ req.body.showId+" "+req.body.userId);
   Show.findById(req.body.showId, function(err, show) {

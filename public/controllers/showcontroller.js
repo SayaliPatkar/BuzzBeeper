@@ -9,16 +9,13 @@ angular.module('MyApp')
                 $scope.userid=$rootScope.userId;
 
                 $scope.isSubscribed = function() {
-
                     return $scope.show.subscribers.indexOf($scope.userid) !== -1;
                 };
-
                 $scope.subscribe = function() {
                     Subscription.subscribe(show,$scope.userid).success(function() {
                         $scope.show.subscribers.push($scope.userid);
                     });
                 };
-
                 $scope.unsubscribe = function() {
                     Subscription.unsubscribe(show,$scope.userid).success(function() {
                         var index = $scope.show.subscribers.indexOf($scope.userid);

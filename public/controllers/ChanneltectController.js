@@ -9,6 +9,7 @@ angular.module('MyApp')
 
         $scope.headingTitle = 'All Shows from given network';
 
+        //on first hit show data from channel HBO
         $scope.shows = Show.query({network:'HBO'});
 
         $scope.filterByChannel = function(channel) {

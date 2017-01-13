@@ -3,5 +3,5 @@
  */
 angular.module('MyApp')
     .controller('contactCtrl', function() {
-
+       //everything happens from html
     });
